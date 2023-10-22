@@ -1,0 +1,30 @@
+CREATE DATABASE Timart 
+
+CREATE TABLE `users` (
+  `id` integer PRIMARY KEY,
+  `username` varchar(255),
+  `email` varchar(255),
+  `password` varchar(255),
+  `createdAt` timestamp,
+  `updatedAt` timestamp
+);
+
+CREATE TABLE `orders` (
+  `id` integer PRIMARY KEY,
+  `orderNumber` integer,
+  `delivered` boolean,
+  `amount` integer,
+  `user_id` integer,
+  `createdAt` timestamp,
+  `updatedAt` timestamp
+);
+
+ALTER TABLE `orders` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+
+SELECT Users.id, Users.username, COUNT(Orders.id) AS order_count
+FROM Users
+JOIN Orders ON Users.id = Orders.user_id
+GROUP BY Users.id, Users.username
+ORDER BY Order_count DESC
+LIMIT 10;
