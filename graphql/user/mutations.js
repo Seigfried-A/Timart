@@ -1,5 +1,5 @@
 const { GraphQLString, GraphQLNonNull } = require("graphql");
-const { User } = require("../../models/users");
+const { User } = require("../../models/Users");
 const UserType  = require("./typeDef");
 const bcrypt = require("bcrypt");
 const joiSchema = require("../../utils/joi");
@@ -12,7 +12,7 @@ const createUser = {
     password: { type: GraphQLNonNull(GraphQLString) },
   },
   resolve: async (obj, args, context, info) => {
-    
+
      const userEmail = await User.findOne({ where: { email: args.email } });
      if (userEmail) {
        throw new Error(`${args.email} already exists`);

@@ -7,7 +7,7 @@ services:
     environment: 
       MYSQL_USER: Timart
       MYSQL_PASSWORD: Timart
-      MYSQL_ALLOW_EMPTY_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
       MYSQL_DATABASE: Timart_db
     ports:
       - 3306:3306

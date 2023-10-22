@@ -1,6 +1,6 @@
 const { GraphQLInt } = require("graphql");
 const  UserType  = require("./typeDef");
-const { User } = require("../../models/users");
+const { User } = require("../../models/Users");
 
 
 

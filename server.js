@@ -15,17 +15,8 @@ const userQuery = require("./graphql/user/query")
 const orderMutations = require("./graphql/orders/mutations")
 const orderQuery = require("./graphql/orders/query")
 const { Order } = require("./models/orders");
-const { User } = require('./models/users');
+const { User } = require('./models/Users');
 
-User.hasMany(Order, {
-  as: "orders",
-  foreignKey: "user_id",
-  allowNull: false,
-});
- 
-Order.belongsTo(User, {
-  as: 'user'
-}) 
 
 const Query = new GraphQLObjectType({
     name: 'query',
@@ -50,6 +41,17 @@ app.use("/graphql", graphqlHTTP({
         mutation: Mutation
 })
 }))
+
+User.hasMany(Order, {
+  as: "orders",
+  foreignKey: "user_id",
+  allowNull: false,
+});
+
+Order.belongsTo(User, {
+  as: "user",
+}); 
+
 
 const PORT = 5000;
 
