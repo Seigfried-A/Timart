@@ -6,6 +6,10 @@ const {
 } = require("graphql");
 
 const OrdersType = require("../orders/typeDefs");
+const { Order } = require("../../models/orders");
+const { User } = require("../../models/Users");
+
+
 
 const UserType = new GraphQLObjectType({
   name: "user",
@@ -17,5 +21,14 @@ const UserType = new GraphQLObjectType({
   }),
 });
 
+User.hasMany(Order, {
+  as: "orders",
+  foreignKey: "user_id",
+  allowNull: false,
+});
+
+Order.belongsTo(User, {
+  as: "user",
+}); 
 
 module.exports = UserType

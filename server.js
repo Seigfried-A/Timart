@@ -1,6 +1,4 @@
 const express = require('express');
-const dotenv = require('dotenv')
-dotenv.config({path: './config.env'})
 const { graphqlHTTP } = require('express-graphql');
 const { GraphQLSchema, GraphQLObjectType } = require('graphql');
 const db = require('./config/db');
@@ -14,8 +12,6 @@ const userMutations  = require("./graphql/user/mutations")
 const userQuery = require("./graphql/user/query")
 const orderMutations = require("./graphql/orders/mutations")
 const orderQuery = require("./graphql/orders/query")
-const { Order } = require("./models/orders");
-const { User } = require('./models/Users');
 
 
 const Query = new GraphQLObjectType({
@@ -41,17 +37,6 @@ app.use("/graphql", graphqlHTTP({
         mutation: Mutation
 })
 }))
-
-User.hasMany(Order, {
-  as: "orders",
-  foreignKey: "user_id",
-  allowNull: false,
-});
-
-Order.belongsTo(User, {
-  as: "user",
-}); 
-
 
 const PORT = 5000;
 
