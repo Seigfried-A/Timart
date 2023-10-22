@@ -1,10 +1,15 @@
+require("dotenv").config()
 const { Sequelize } = require("sequelize");
-const { db }= require("./dbconfig")
 
-const sequelize = new Sequelize(db.DB, db.USER, db.PASSWORD, {
-  host: db.HOST,
-  dialect: db.dialect,
-});
+const sequelize = new Sequelize(
+  process.env.DB,
+  process.env.USER,
+  process.env.PASSWORD,
+  {
+    host: process.env.HOST,
+    dialect: process.env.DIALECT,
+  }
+);
 
 function init() {
     sequelize.sync().then(res => {
