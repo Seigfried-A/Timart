@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "fa34fd8a-588f-4d6f-9155-92f2aac171db",
+		"name": "Timart Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24950262"
+	},
+	"item": [
+		{
+			"name": "retriveOrderById",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetUser {\r\n    getOrders(id: 32) {\r\n        id\r\n        orderNumber\r\n        amount\r\n        delivered\r\n        createdAt\r\n        updateAt\r\n        user_id\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retriveUserById",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetUser {\r\n    getUser(id: 32) {\r\n        id\r\n        username\r\n        email\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation CreateUser {\r\n    createUser(\r\n        username: \"Cakes\"\r\n        email: \"theCakes@gmail.com\"\r\n        password: \"theCak@g1\"\r\n    ) {\r\n        id\r\n        username\r\n        email\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation CreateOrders {\r\n    createOrders(amount: 299999, user_id: 32) {\r\n        id\r\n        orderNumber\r\n        amount\r\n        delivered\r\n        createdAt\r\n        updateAt\r\n        user_id\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOrdersByUserId",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetUser {\r\n    getUser(id: 32) {\r\n        id\r\n        username\r\n        email\r\n        orders {\r\n            id\r\n            orderNumber\r\n            amount\r\n            delivered\r\n            createdAt\r\n            updateAt\r\n            user_id\r\n        }\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
