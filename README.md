@@ -13,6 +13,7 @@ to create a MYSQL db container.
 Run npm run dev: 
 this starts the server and initializes the database
 
+Run npm run migrate:up to generate neccesary migration files
 Run npm run seed:
 this generates data and populates tables in the database
 
